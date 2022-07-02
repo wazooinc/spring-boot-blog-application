@@ -1,12 +1,15 @@
 package com.example.springbootblogapplication.models;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Post {
 
     @Id
@@ -20,5 +23,9 @@ public class Post {
 
     private LocalDateTime createdDate;
 
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
+    private Account account;
 
 }
