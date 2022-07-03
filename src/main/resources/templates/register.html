@@ -16,19 +16,19 @@
               th:action="@{/register}"
               th:object="${account}"
               method="POST">
-            <div class="form-group">
+            <div>
                 <label for="firstname">First Name</label>
                 <input id="firstname" type="text" th:field="*{firstName}" placeholder="First Name"/>
             </div>
-            <div class="form-group">
+            <div>
                 <label for="lastname">Last Name</label>
                 <input id="lastname" type="text" th:field="*{lastName}" placeholder="Last Name"/>
             </div>
-            <div class="form-group">
+            <div>
                 <label for="email">Email</label>
                 <input id="email" type="text" th:field="*{email}" placeholder="Email"/>
             </div>
-            <div class="form-group">
+            <div>
                 <label for="password">Password</label>
                 <input id="password" type="password" th:field="*{password}" placeholder="Password"/>
             </div>

@@ -30,10 +30,9 @@
         <li><a th:href="@{/login}">Login</a></li>
     </ul>
     <div sec:authorize="isAuthenticated()">
-        <form class="navbar-form"
-              th:action="@{/logout}"
+        <form th:action="@{/logout}"
               method="POST">
-            <div class="form-group">
+            <div>
                 <label>Hi, <span sec:authentication="name">Username</span></label>
             </div>
             <button type="submit">Logout</button>
