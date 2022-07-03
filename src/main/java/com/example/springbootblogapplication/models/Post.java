@@ -25,6 +25,8 @@ public class Post {
 
     private LocalDateTime createdAt;
 
+    private LocalDateTime updatedAt;
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
@@ -37,6 +39,7 @@ public class Post {
                 ", title='" + title + "'" +
                 ", body='" + body + "'" +
                 ", createdAt='" + createdAt + "'" +
+                ", updatedAt='" + updatedAt + "'" +
                 "}";
     }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,16 +18,27 @@
         <div class="post" th:each="post : ${posts}">
             <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
             <h5 th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
-            <h5 th:text="'Published on ' + ${post.createdAt}">Created Date</h5>
+            <h5 th:text="'Published at ' + ${post.createdAt}">Created At</h5>
+            <h5 th:text="'Updated at ' + ${post.updatedAt}">Updated At</h5>
             <p th:text="${post.body}">body text</p>
             <br>
         </div>
     </div>
     <hr />
-    <ul>
+    <ul sec:authorize="!isAuthenticated()">
         <li><a th:href="@{/register}">Register</a></li>
         <li><a th:href="@{/login}">Login</a></li>
     </ul>
+    <div sec:authorize="isAuthenticated()">
+        <form class="navbar-form"
+              th:action="@{/logout}"
+              method="POST">
+            <div class="form-group">
+                <label>Hi, <span sec:authentication="name">Username</span></label>
+            </div>
+            <button type="submit">Logout</button>
+        </form>
+    </div>
 
 </div>
 
