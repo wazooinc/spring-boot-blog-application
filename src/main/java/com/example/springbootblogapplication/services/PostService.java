@@ -25,7 +25,7 @@ public class PostService {
 
     public Post save(Post post) {
         if (post.getId() == null) {
-            post.setCreatedDate(LocalDateTime.now());
+            post.setCreatedAt(LocalDateTime.now());
         }
 
         return postRepository.save(post);

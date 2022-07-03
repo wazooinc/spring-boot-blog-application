@@ -1,15 +1,19 @@
 package com.example.springbootblogapplication.models;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-public class Account {
+public class Account implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -25,5 +29,16 @@ public class Account {
 
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
+
+    @Override
+    public String toString() {
+        return "Account{" +
+            "id=" + id +
+            ", firstName='" + firstName + "'" +
+            ", lastName='" + lastName + "'" +
+            ", email='" + email + "'" +
+        "}";
+    }
+
 
 }

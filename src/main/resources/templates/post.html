@@ -7,17 +7,14 @@
     <title>Blog :: Post</title>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="post">
-                <h2 class="text-center" th:text="${post.title}">Title</h2>
-                <h5 class="text-muted" th:text="'Created on ' + ${post.createdDate}">Created Date</h5>
-                <p th:text="${post.body}">body text</p>
-            </div>
+    <div class="container">
+        <a th:href="@{/}">Home</a>
+        <div class="post">
+            <h2 class="text-center" th:text="${post.title}">Title</h2>
+            <h5 class="text-muted" th:text="'Created on ' + ${post.createdAt}">Created Date</h5>
+            <p th:text="${post.body}">body text</p>
         </div>
     </div>
-</div>
 
 </body>
 </html>

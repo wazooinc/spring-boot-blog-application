@@ -10,11 +10,14 @@
 <div class="container">
     <h1>Spring Boot Blog Application</h1>
     <hr />
+    <ul>
+        <li><a th:href="@{/posts/new}">New Post</a></li>
+    </ul>
     <div class="posts-container">
         <div class="post" th:each="post : ${posts}">
             <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
             <h5 th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
-            <h5 th:text="'Published on ' + ${post.createdDate}">Created Date</h5>
+            <h5 th:text="'Published on ' + ${post.createdAt}">Created Date</h5>
             <p th:text="${post.body}">body text</p>
             <br>
         </div>

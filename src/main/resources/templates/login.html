@@ -7,10 +7,10 @@
     <title>Blog :: Login</title>
 </head>
 <body>
-<div class="container">
-    <h1>Spring Boot Blog Application</h1>
-    <hr />
-    <div class="posts-container">
+    <div class="container">
+        <h1>Spring Boot Blog Application</h1>
+        <hr />
+        <a th:href="@{/}">Home</a>
         <h2 class="text-center">Login</h2>
         <form action="#"
               th:action="@{/login}"
@@ -26,7 +26,6 @@
             <button type="submit">Login!</button>
         </form>
     </div>
-</div>
 
 </body>
 </html>

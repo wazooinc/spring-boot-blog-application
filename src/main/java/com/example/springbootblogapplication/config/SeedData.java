@@ -30,9 +30,11 @@ public class SeedData implements CommandLineRunner {
 
             account1.setFirstName("homer");
             account1.setLastName("simpson");
+            account1.setEmail("h.simpson@springfield.com");
 
             account2.setFirstName("chief");
             account2.setLastName("wiggum");
+            account2.setEmail("c.wiggum@springfield.com");
 
             accountService.save(account1);
             accountService.save(account2);

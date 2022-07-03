@@ -1,14 +1,16 @@
 package com.example.springbootblogapplication.models;
 
 import com.sun.istack.NotNull;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Post {
 
@@ -21,11 +23,21 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String body;
 
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
     private Account account;
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", title='" + title + "'" +
+                ", body='" + body + "'" +
+                ", createdAt='" + createdAt + "'" +
+                "}";
+    }
 
 }

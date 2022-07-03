@@ -7,10 +7,10 @@
     <title>Blog :: Register</title>
 </head>
 <body>
-<div class="container">
-    <h1>Spring Boot Blog Application</h1>
-    <hr />
-    <div class="posts-container">
+    <div class="container">
+        <h1>Spring Boot Blog Application</h1>
+        <hr />
+        <a th:href="@{/}">Home</a>
         <h2 class="text-center">Register</h2>
         <form action="#"
               th:action="@{/register}"
@@ -35,7 +35,6 @@
             <button type="submit">Register!</button>
         </form>
     </div>
-</div>
 
 </body>
 </html>
