@@ -1,7 +1,6 @@
 package com.example.springbootblogapplication.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -31,9 +30,7 @@ public class WebSecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers(WHITELIST).permitAll()
-                .antMatchers(HttpMethod.GET, "/posts/*").permitAll()
-                .antMatchers(HttpMethod.POST, "/posts/*").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.DELETE, "/posts/*").hasAnyRole("ADMIN")
+                .antMatchers("/posts/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()

@@ -31,6 +31,7 @@ public class PostController {
 
         // find post by id
         Optional<Post> optionalPost = this.postService.getById(id);
+        
         // if post exists put it in model
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
@@ -110,7 +111,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}/delete")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deletePost(@PathVariable Long id) {
 
         // find post by id

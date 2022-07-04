@@ -25,10 +25,13 @@ public class AccountService {
     private AuthorityRepository authorityRepository;
 
     public Account save(Account account) {
+
         if (account.getId() == null) {
-            Set<Authority> authorities = new HashSet<>();
-            authorityRepository.findById("ROLE_USER").ifPresent(authorities::add);
-            account.setAuthorities(authorities);
+            if (account.getAuthorities().isEmpty()) {
+                Set<Authority> authorities = new HashSet<>();
+                authorityRepository.findById("ROLE_USER").ifPresent(authorities::add);
+                account.setAuthorities(authorities);
+            }
         }
 
         account.setPassword(passwordEncoder.encode(account.getPassword()));

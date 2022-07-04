@@ -34,7 +34,7 @@ public class Post {
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "Post{" +
                 "id=" + id +
                 ", title='" + title + "'" +
                 ", body='" + body + "'" +
