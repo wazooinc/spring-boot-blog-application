@@ -31,7 +31,7 @@ public class PostController {
 
         // find post by id
         Optional<Post> optionalPost = this.postService.getById(id);
-        
+
         // if post exists put it in model
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
