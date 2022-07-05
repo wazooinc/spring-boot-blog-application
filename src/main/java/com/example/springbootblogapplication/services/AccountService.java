@@ -35,7 +35,7 @@ public class AccountService {
         }
 
         account.setPassword(passwordEncoder.encode(account.getPassword()));
-        return accountRepository.saveAndFlush(account);
+        return accountRepository.save(account);
     }
 
     public Optional<Account> findOneByEmail(String email) {
