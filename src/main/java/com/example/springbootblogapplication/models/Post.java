@@ -1,11 +1,12 @@
 package com.example.springbootblogapplication.models;
 
-import com.sun.istack.NotNull;
+
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
