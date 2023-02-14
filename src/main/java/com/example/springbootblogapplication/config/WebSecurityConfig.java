@@ -24,6 +24,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/rss/**").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/posts/**").permitAll()
                         .requestMatchers(PathRequest.toH2Console()).permitAll()
