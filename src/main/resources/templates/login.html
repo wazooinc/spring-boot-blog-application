@@ -1,31 +1,33 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{shared/application}"
+>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog :: Login</title>
+    <title>Login</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Spring Boot Blog Application</h1>
-        <hr />
-        <a th:href="@{/}">Home</a>
-        <h2>Login</h2>
+<section layout:fragment="content">
+        <h2 class="text-center">Login</h2>
         <form action="#"
               th:action="@{/login}"
               method="POST">
-            <div>
-                <label for="email">Email</label>
-                <input id="email" type="text" name="email" placeholder="Email" />
+            <div class="row">
+                <label for="email" class="col-2">Email</label>
+                <div class="col-10">
+                    <input class="form-control" id="email" type="text" name="email" placeholder="Email" />
+                </div>
             </div>
-            <div>
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password" placeholder="Password" />
+            <div class="row">
+                <label for="password" class="col-2">Password</label>
+                <div class="col-10">
+                    <input class="form-control" id="password" type="password" name="password" placeholder="Password" />
+                </div>
             </div>
-            <button type="submit">Login!</button>
+            <button class="btn btn-outline-primary" type="submit">Login!</button>
         </form>
-    </div>
+    </section>
 
 </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Blog Application</title>
+    <meta name="description" content="a cool blog about me" />
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css" />
+</head>
+<body>
+    <section layout:fragment="header">
+        <div th:replace="~{shared/_header.html :: header}"></div>
+    </section>
+    <div class="container">
+        <section layout:fragment="content">
+            <p>View content to be rendered here</p>
+        </section>
+        <section layout:fragment="footer">
+            <div th:replace="~{shared/_footer.html :: footer}"></div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,16 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{shared/application}"
+>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog :: Register</title>
+    <title>Register</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Spring Boot Blog Application</h1>
-        <hr />
-        <a th:href="@{/}">Home</a>
+    <section layout:fragment="content">
         <h2>Register New Account</h2>
         <form action="#"
               th:action="@{/register}"
@@ -34,7 +32,7 @@
             </div>
             <button type="submit">Register!</button>
         </form>
-    </div>
+    </section>
 
 </body>
 </html>
