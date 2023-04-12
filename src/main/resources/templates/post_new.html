@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{shared/application}"
+>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog :: New Post</title>
+    <title>New Post</title>
 </head>
 <body>
-    <div class="container">
-        <a th:href="@{/}">Home</a>
+<section layout:fragment="content">
         <form action="#"
               th:action="@{'/posts/new'}"
               th:object="${post}"
@@ -16,17 +16,21 @@
             <input type="hidden" th:field="*{account}" />
             <input type="hidden" th:field="*{createdAt}" />
             <h2>Write new Post</h2>
-            <div>
-                <label for="new-post-title">Title</label>
-                <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title"/>
+            <div class="row">
+                <label class="col-2" for="new-post-title">Title</label>
+                <div class="col-10">
+                    <input class="form-control" id="new-post-title" type="text" th:field="*{title}" placeholder="Title"/>
+                </div>
             </div>
-            <div>
-                <label for="new-post-body">Body</label>
-                <textarea id="new-post-body" th:field="*{body}"></textarea>
+            <div class="row">
+                <label class="col-2" for="new-post-body">Body</label>
+                <div class="col-10">
+                    <textarea id="new-post-body" class="form-control" th:field="*{body}"></textarea>
+                </div>
             </div>
-            <button type="submit">Publish Post</button>
+            <button class="btn btn-outline-primary" type="submit">Publish Post</button>
         </form>
-    </div>
+</section>
 
 </body>
 </html>
