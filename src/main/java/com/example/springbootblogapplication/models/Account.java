@@ -5,7 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
-import java.io.Serializable;
+import lombok.ToString;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,40 +15,29 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account implements Serializable {
+@ToString
+public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    Long id;
 
-    private String email;
+    String email;
 
-    private String password;
+    String password;
 
-    private String firstName;
+    String firstName;
 
-    private String lastName;
+    String lastName;
 
     @OneToMany(mappedBy = "account")
-    private List<Post> posts;
+    List<Post> posts;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "account_authority",
             joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
-    private Set<Authority> authorities = new HashSet<>();
-
-    @Override
-    public String toString() {
-        return "Account{" +
-            "id=" + id +
-            ", firstName='" + firstName + "'" +
-            ", lastName='" + lastName + "'" +
-            ", email='" + email + "'" +
-            ", authorities=" + authorities +
-        "}";
-    }
-
+    Set<Authority> authorities = new HashSet<>();
 
 }

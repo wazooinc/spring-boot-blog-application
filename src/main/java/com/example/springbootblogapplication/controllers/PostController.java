@@ -4,7 +4,7 @@ import com.example.springbootblogapplication.models.Account;
 import com.example.springbootblogapplication.models.Post;
 import com.example.springbootblogapplication.services.AccountService;
 import com.example.springbootblogapplication.services.PostService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,13 +18,11 @@ import java.security.Principal;
 import java.util.Optional;
 
 @Controller
+@RequiredArgsConstructor
 public class PostController {
 
-    @Autowired
-    private PostService postService;
-
-    @Autowired
-    private AccountService accountService;
+    private final PostService postService;
+    private final AccountService accountService;
 
     @GetMapping("/posts/{id}")
     public String getPost(@PathVariable Long id, Model model) {

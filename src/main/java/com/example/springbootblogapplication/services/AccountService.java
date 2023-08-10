@@ -4,7 +4,7 @@ import com.example.springbootblogapplication.models.Account;
 import com.example.springbootblogapplication.models.Authority;
 import com.example.springbootblogapplication.repositories.AccountRepository;
 import com.example.springbootblogapplication.repositories.AuthorityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +13,12 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class AccountService {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
-    private AuthorityRepository authorityRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final AccountRepository accountRepository;
+    private final AuthorityRepository authorityRepository;
 
     public Account save(Account account) {
 
