@@ -1,47 +1,38 @@
 package com.example.springbootblogapplication.models;
 
-
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+import lombok.ToString;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    Long id;
 
-    private String title;
+    String title;
 
     @Column(columnDefinition = "TEXT")
-    private String body;
+    String body;
 
-    private LocalDateTime createdAt;
+    LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+    LocalDateTime updatedAt;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
-    private Account account;
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", title='" + title + "'" +
-                ", body='" + body + "'" +
-                ", createdAt='" + createdAt + "'" +
-                ", updatedAt='" + updatedAt + "'" +
-                "}";
-    }
+    Account account;
 
 }

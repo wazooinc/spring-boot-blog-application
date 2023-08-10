@@ -1,7 +1,7 @@
 package com.example.springbootblogapplication.services;
 
 import com.example.springbootblogapplication.models.Account;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,10 +14,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component("userDetailsService")
+@RequiredArgsConstructor
 public class MyUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private AccountService accountService;
+    private final AccountService accountService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

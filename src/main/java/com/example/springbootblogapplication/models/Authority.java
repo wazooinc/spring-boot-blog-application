@@ -4,17 +4,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.*;
-import java.io.Serializable;
+import lombok.ToString;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
-public class Authority implements Serializable {
+@ToString
+public class Authority {
 
     @Id
     @Column(length = 16)
-    private String name;
+    String name;
 
     @Override
     public boolean equals(Object o) {
@@ -35,13 +36,5 @@ public class Authority implements Serializable {
     public int hashCode() {
         return name.hashCode();
     }
-
-    @Override
-    public String toString() {
-        return "Authority{" +
-            "name='" + name + "'" +
-            "}";
-    }
-
 
 }
