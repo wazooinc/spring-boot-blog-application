@@ -14,7 +14,6 @@
           th:action="@{'/posts/{id}'(id=${post.id})}"
           th:object="${post}"
           method="post">
-        <input type="hidden" th:field="*{account}" />
         <input type="hidden" th:field="*{createdAt}" />
         <h2>Update Post</h2>
         <div>

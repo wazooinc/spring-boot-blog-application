@@ -1,5 +1,6 @@
 package com.example.springbootblogapplication.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,12 +25,14 @@ public class Account {
 
     String email;
 
+    @JsonIgnore
     String password;
 
     String firstName;
 
     String lastName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "account")
     List<Post> posts;
 
