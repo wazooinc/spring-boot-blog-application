@@ -59,22 +59,11 @@ public class PostController {
 
     @GetMapping("/posts/new")
     @PreAuthorize("isAuthenticated()")
-    public String createNewPost(Model model, Principal principal) {
+    public String createNewPost(Model model) {
 
-        String authUsername = "anonymousUser";
-        if (principal != null) {
-            authUsername = principal.getName();
-        }
-
-        Optional<Account> optionalAccount = accountService.findOneByEmail(authUsername);
-        if (optionalAccount.isPresent()) {
-            Post post = new Post();
-            post.setAccount(optionalAccount.get());
-            model.addAttribute("post", post);
-            return "post_new";
-        } else {
-            return "redirect:/";
-        }
+        Post post = new Post();
+        model.addAttribute("post", post);
+        return "post_new";
     }
 
     @PostMapping("/posts/new")
@@ -84,12 +73,12 @@ public class PostController {
         if (principal != null) {
             authUsername = principal.getName();
         }
-        if (post.getAccount().getEmail().compareToIgnoreCase(authUsername) < 0) {
-            // TODO: some kind of error?
-            // our account email on the Post not equal to current logged in account!
-        }
+
+        Account account = accountService.findOneByEmail(authUsername).orElseThrow(() -> new IllegalArgumentException("Account not found"));
+
+        post.setAccount(account);
         postService.save(post);
-        return "redirect:/posts/" + post.getId();
+        return "redirect:/";
     }
 
     @GetMapping("/posts/{id}/edit")

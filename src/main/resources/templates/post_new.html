@@ -14,7 +14,6 @@
               th:action="@{'/posts/new'}"
               th:object="${post}"
               method="post">
-            <input type="hidden" th:field="*{account}" />
             <input type="hidden" th:field="*{createdAt}" />
             <h2>Write new Post</h2>
             <div>
