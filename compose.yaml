@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  database:
+    image: mysql:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/db
+    networks:
+      - spring-network
+
+  phpmyadmin:
+    depends_on:
+      - database
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    env_file: .env
+    environment:
+      PMA_HOST: database
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - spring-network
+
+
+volumes:
+  db-data: {}
+
+networks:
+  spring-network:
+    driver: bridge
