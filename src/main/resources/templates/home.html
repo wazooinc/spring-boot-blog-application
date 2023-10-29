@@ -17,6 +17,7 @@
     </ul>
     <div class="posts-container">
         <div class="post" th:each="post : ${posts}">
+            <img th:src="@{'/images/' + ${post.imageFilePath}}" height="200px" class="img-fluid" />
             <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
             <h5 th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
             <h5 th:text="'Published at ' + ${post.createdAt}">Created At</h5>

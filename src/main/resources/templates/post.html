@@ -13,6 +13,7 @@
     <div class="container">
         <a th:href="@{/}">Home</a>
         <div class="post">
+            <img th:src="@{'/images/' + ${post.imageFilePath}}" height="200px" class="img-fluid" />
             <h2 th:text="${post.title}">Title</h2>
             <h5 th:text="'Created at ' + ${post.createdAt}">Created At</h5>
             <h5 th:text="'Updated at ' + ${post.updatedAt}">Updated At</h5>

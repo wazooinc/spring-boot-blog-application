@@ -29,6 +29,8 @@ public class Post {
 
     LocalDateTime updatedAt;
 
+    String imageFilePath;
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)

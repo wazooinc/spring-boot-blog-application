@@ -5,6 +5,7 @@ import com.example.springbootblogapplication.models.Authority;
 import com.example.springbootblogapplication.models.Post;
 import com.example.springbootblogapplication.repositories.AuthorityRepository;
 import com.example.springbootblogapplication.services.AccountService;
+import com.example.springbootblogapplication.services.FileService;
 import com.example.springbootblogapplication.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +19,9 @@ import java.util.Set;
 public class SeedData implements CommandLineRunner {
 
     @Autowired
+    private FileService fileService;
+
+    @Autowired
     private PostService postService;
 
     @Autowired
@@ -28,6 +32,9 @@ public class SeedData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        fileService.init();
+
         List<Post> posts = postService.getAll();
 
         if (posts.size() == 0) {
@@ -73,6 +80,7 @@ public class SeedData implements CommandLineRunner {
                     .title("What is Lorem Ipsum?")
                     .body("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
                     .account(account1)
+                    .imageFilePath("pexels-adrien-olichon-16059681.jpg")
                     .build();
 
             Post post2 = Post
@@ -80,6 +88,7 @@ public class SeedData implements CommandLineRunner {
                     .title("Something else Ipsum")
                     .body("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Magna eget est lorem ipsum dolor sit amet consectetur adipiscing. Tempus quam pellentesque nec nam aliquam sem et tortor. Pellentesque sit amet porttitor eget. Sed augue lacus viverra vitae congue eu consequat. Ultrices vitae auctor eu augue. Mattis rhoncus urna neque viverra. Consectetur lorem donec massa sapien faucibus et molestie ac feugiat. Sociis natoque penatibus et magnis dis parturient montes nascetur. Cursus turpis massa tincidunt dui ut ornare lectus. Odio pellentesque diam volutpat commodo sed egestas egestas fringilla. Id cursus metus aliquam eleifend mi. Nibh nisl condimentum id venenatis a condimentum.")
                     .account(account2)
+                    .imageFilePath("pexels-adrien-olichon-16059681.jpg")
                     .build();
 
             postService.save(post1);
