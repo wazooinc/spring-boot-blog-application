@@ -1,13 +1,11 @@
 package com.example.springbootblogapplication.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import jakarta.persistence.*;
-import lombok.ToString;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +15,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @ToString
+@Builder
+@AllArgsConstructor
 public class Account {
 
     @Id
@@ -31,6 +31,10 @@ public class Account {
     String firstName;
 
     String lastName;
+
+    LocalDateTime createdAt;
+
+    LocalDateTime updatedAt;
 
     @JsonIgnore
     @OneToMany(mappedBy = "account")

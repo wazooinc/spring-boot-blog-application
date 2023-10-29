@@ -1,12 +1,9 @@
 package com.example.springbootblogapplication.models;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import jakarta.persistence.*;
-import lombok.ToString;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +12,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @ToString
+@Builder
+@AllArgsConstructor
 public class Post {
 
     @Id
