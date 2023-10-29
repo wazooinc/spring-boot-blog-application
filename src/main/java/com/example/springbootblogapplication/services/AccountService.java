@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -28,8 +29,9 @@ public class AccountService {
                 authorityRepository.findById("ROLE_USER").ifPresent(authorities::add);
                 account.setAuthorities(authorities);
             }
+            account.setCreatedAt(LocalDateTime.now());
         }
-
+        account.setUpdatedAt(LocalDateTime.now());
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         return accountRepository.save(account);
     }
